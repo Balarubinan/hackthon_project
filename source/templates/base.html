@@ -40,15 +40,19 @@ body {margin:0;}
 {% else %}
 <title>Project Site</title>
 {% endif %}
+
+<link href="source/templates/css/bootstrap.min.css" rel="stylesheet">
+<link href="/templates/css/style.css" rel="stylesheet">
 </head>
 <body>
-
+<base href="D:\html projects\Hackthon project\">
 <div class="navbar">
   <a href="/Sign_up">Sign Up</a>
   <a href="/Auction">Auction</a>
-  <a href="/about">About Site</a>
-  {%block content%}
-  {%endblock%}
+  <a href="/About">About Site</a>
 </div>
+<br><br><br><br>
+{%block content%}
+{%endblock%}
 </body>
 </html>
