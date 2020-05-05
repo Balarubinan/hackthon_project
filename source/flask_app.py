@@ -5,9 +5,11 @@ from source.login_from import Form, SignUpForm, PostHarvestForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'raj'
 
+
 @app.route('/About')
 def about():
     return render_template('about.html')
+
 
 @app.route('/history_farm')
 def farmer_history():
@@ -21,7 +23,7 @@ def retailer_history():
     return render_template('retailer_history_page.html', history_list=history)
 
 
-@app.route('/post_farmer',methods=['GET', 'POST'])
+@app.route('/post_farmer', methods=['GET', 'POST'])
 def postfarmer():
     postdet = PostHarvestForm()
     if postdet.postdescript.data != None:
@@ -29,11 +31,12 @@ def postfarmer():
         return redirect('/Farmer_page')
     return render_template('post_harvest.html', postdet=postdet)
 
-@app.route('/post_retailer',methods=['GET', 'POST'])
+
+@app.route('/post_retailer', methods=['GET', 'POST'])
 def postretailer():
-    postdet = PostHarvestForm() # both the forms are similar in manner hence same class obeject used
-    if postdet.postdescript.data!=None:
-        print(postdet.postdescript.data) # add DB function for saveing post
+    postdet = PostHarvestForm()  # both the forms are similar in manner hence same class obeject used
+    if postdet.postdescript.data != None:
+        print(postdet.postdescript.data)  # add DB function for saveing post
         return redirect('/Retailer_page')
     return render_template('post_retailer.html', postdet=postdet)
 
@@ -57,14 +60,14 @@ def auction_page():
     return render_template('auction_page.html', auction_list=lis)
 
 
-@app.route('/home',methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])
 def remain():
-    form=Form()
+    form = Form()
     # access the database and get the needed authencation
     if form.username.data == "admin" and form.password.data == "admin":
         print('In here')
         return redirect(url_for(f'{form.acc_type.data.lower()}_page'))
-    return render_template('main_page.html',form=form)
+    return render_template('main_page.html', form=form)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -86,10 +89,10 @@ def mainpage():
 #         return redirect('/')
 #     return render_template('login_template.html',title='SIGN IN',form=form)
 
-@app.route('/signup',methods=['POST','GET'])
+@app.route('/signup', methods=['POST', 'GET'])
 def signup():
     form = SignUpForm()
-    if form.username.data!=None:
+    if form.username.data != None:
         # pass # insert db operations here
         # if accepted redirect to the root fmainpage.htmml
         return redirect('/home')
