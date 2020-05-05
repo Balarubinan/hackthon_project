@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="footer">
+  <a href="/post_farmer">Post Requirment</a>
+  <a href="/history_farm">Sales Post history</a>
+  <a href="/logout">logout</a>
+</div>
+<h1>
+    {% for retailer_post in retailer_posts%}
+    <p>
+        {{retailer_post}}
+<!--        finish the database operations here-->
+    </p>
+    {%endfor%}
+</h1>
+{%endblock%}

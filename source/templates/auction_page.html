@@ -1,4 +1,11 @@
 {%extends "base.html"%}
 {%block content%}
-
+<h1> Current Auctions</h1>
+{%for auction in auction_list%}
+<hr>
+<p>
+{{auction}}
+<!--    specigy full types ie name things etc after connecting to db-->
+</p>
+{%endfor%}
 {%endblock%}
