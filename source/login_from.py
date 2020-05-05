@@ -21,3 +21,8 @@ class SignUpForm(FlaskForm):
     email=EmailField('Email address',validators=[DataRequired()])
     acc_type = RadioField('Account type', validators=[DataRequired()], choices=['Farmer', 'Retailer'])
     submit = SubmitField('Sign up',render_kw={'type':"submit",'class':'signupbtn'})
+
+class PostHarvestForm(FlaskForm):
+    postname=StringField('Post Title:',validators=[DataRequired()])
+    postdescript=StringField('Post Description',validators=[DataRequired()])
+    submit = SubmitField('Post harvest details', render_kw={'type': "submit", 'class': 'signupbtn'})

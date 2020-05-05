@@ -1,8 +1,15 @@
 from flask import Flask,render_template,flash,redirect,url_for,request
 from source import login_from
-from source.login_from import Form,SignUpForm
+from source.login_from import Form,SignUpForm,PostHarvestForm
 app = Flask(__name__)
 app.config['SECRET_KEY']='raj'
+
+@app.route('/post_farmer')
+def postfarmer():
+    postdet=PostHarvestForm()
+    if postdet.postdescript!=None:
+        redirect('/Farmer_page')
+    return render_template('post_harvest.html',postdet=postdet)
 
 @app.route('/Farmer_page')
 def farmer_page():
