@@ -1,0 +1,81 @@
+table,th,td {
+  border: 1px solid blue;
+  border-collapse: collapse;
+  padding: 15px;
+  text-align: left;
+  border-spacing: 5px;
+  /* for merging the borders as one border */
+}
+h1 {
+  color: darkblue;
+  font-size: 10vw;
+  border-style: dashed;
+  border-color: Black;
+  outline-style: inset;
+  outline-width: 20px;
+  outline-color: green;
+  background-color: orange;
+  font-family:"Arial",Times, serif;
+  /* the above code is a prrefrence list for the
+  font-family attribuute */
+  /* border-style: dashed; */
+  /* border-radius: 30px 10px 4px 1px;
+  border-width: 25px 10px 40px 5px;
+  border-color: red green red blue; */
+  /* all the above syntaxes are in specific for all borders fromat
+  I can also alternatively use one value for all of the
+  like border-style=30px;  */
+}
+#t01 {
+  margin: 50px 50px;
+  /* margin:auto;
+  if the margin is set to inherit value the margin values
+  of the parent element will be inherited by the child tag */
+  background-color: yellow;
+}
+#t01 tr:nth-child(even){
+  background-color: #ffff
+}
+#t01 tr:nth-child(odd){
+  background-color: #1111
+  /* border-style:dashed; */
+}
+ul {
+  /* list-style-image:url("E:\\New Downloads\\download images\\sherly.jpg");
+  the above image is too big to ffit innto the icon
+  so as a result it spans the whole page */
+}
+ol {
+  type="A";
+}
+.names {
+  background-color: lightgreen;
+}
+body {
+  background-image: url("E:\\New Downloads\\download images\\sherly.jpg");
+  background-color: lightgreen;
+  font-style: bold;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+header {
+  font-size: 50px;
+  font-style: times;
+  align-content: center;
+  border:3px;
+  border-color: Tomato;
+}
+img {
+  width: 80%;
+  padding-left: 10%;
+  padding-left: 10%;
+  border-style: dotted;
+  outline-color: green;
+  outline-style=inset;
+}
+code{
+  background: yellow;
+}
+input[type=text]{
+  border-radius: 25px;
+}
