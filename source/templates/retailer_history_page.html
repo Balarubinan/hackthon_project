@@ -1,13 +1,16 @@
 {%extends "base.html"%}
 {%block content%}
-{% if len(history_list)==0%}
+{% if history_list|length==0%}
 <p>
     No Harvest Posts have been posted,Uses the post option to post
 </p>
 {%else%}
-{%for harvest in history_list%}
+<h2 align="center">Post History</h2>
+<hr>
+{%for retail in history_list%}
 <p>
-    {{harvest}}
+    {{retail}}<br>
+    <hr>
 </p>
 {%endfor%}
 {%endif%}

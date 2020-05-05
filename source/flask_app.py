@@ -57,9 +57,14 @@ def auction_page():
     return render_template('auction_page.html', auction_list=lis)
 
 
-@app.route('/home')
+@app.route('/home',methods=['GET', 'POST'])
 def remain():
-    return render_template('main_page.html')
+    form=Form()
+    # access the database and get the needed authencation
+    if form.username.data == "admin" and form.password.data == "admin":
+        print('In here')
+        return redirect(url_for(f'{form.acc_type.data.lower()}_page'))
+    return render_template('main_page.html',form=form)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -81,13 +86,13 @@ def mainpage():
 #         return redirect('/')
 #     return render_template('login_template.html',title='SIGN IN',form=form)
 
-@app.route('/signup')
+@app.route('/signup',methods=['POST','GET'])
 def signup():
     form = SignUpForm()
-    if form.validate_on_submit():
+    if form.username.data!=None:
         # pass # insert db operations here
         # if accepted redirect to the root fmainpage.htmml
-        return redirect('/')
+        return redirect('/home')
     return render_template('signup.html', title='SIGN UP', form=form)
 
 
