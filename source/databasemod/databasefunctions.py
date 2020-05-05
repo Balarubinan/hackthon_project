@@ -14,5 +14,3 @@ except Exception:
 
 #fuction to fetch user creditentials form the database
 def fetch_cred(user):
-    pass
-

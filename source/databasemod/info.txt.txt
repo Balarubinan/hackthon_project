@@ -1,0 +1,3 @@
+The db file is a pdf file that contains the database scheme in a table form
+The Database.db file is the database file that is connected to the flask app
+The Py daatbasefunction.py is the py module that holds the functions that opertae on the DB file
