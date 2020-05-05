@@ -45,6 +45,7 @@ def mainpage():
 #         return redirect('/')
 #     return render_template('login_template.html',title='SIGN IN',form=form)
 # hh sada
+#this change is new
 @app.route('/signup',methods=['GET','POST'])
 def signup():
     form=SignUpForm()
