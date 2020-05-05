@@ -20,4 +20,4 @@ class SignUpForm(FlaskForm):
     remember = BooleanField("Know me??")
     email=EmailField('Email address',validators=[DataRequired()])
     acc_type = RadioField('Account type', validators=[DataRequired()], choices=['Farmer', 'Retailer'])
-    submit = SubmitField('Sign up')
+    submit = SubmitField('Sign up',render_kw={'type':"submit",'class':'signupbtn'})
