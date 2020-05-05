@@ -19,6 +19,8 @@ class SignUpForm(FlaskForm):
     password1 = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired()])
     remember = BooleanField("Know me??")
+    address=StringField('Address',validators=[DataRequired()])
+    phone=StringField('Phone',validators=[DataRequired()])
     email=EmailField('Email address',validators=[DataRequired()])
     acc_type = RadioField('Account type', validators=[DataRequired()], choices=['Farmer', 'Retailer'])
     submit = SubmitField('Sign up',render_kw={'type':"submit",'class':'signupbtn'})
