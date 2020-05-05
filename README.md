@@ -10,6 +10,7 @@
 2)To increase thee agricultural produce by boosting sales for startup farmers
 # Status so far:
 1)All UI for the website has been completed
-2)database schemas have been decided
-3)Waiting to deploy
+2)database schemas have been decide
+3)database created and database functions have been finsihed
+4)Waiting to deploy
 
