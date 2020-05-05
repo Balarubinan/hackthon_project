@@ -6,7 +6,8 @@ app.config['SECRET_KEY']='raj'
 
 @app.route('/Farmer_page')
 def farmer_page():
-    return render_template('farmer_page.html')
+    retailer_posts=['post1','post2','post3']
+    return render_template('farmer_page.html',retailer_posts=retailer_posts)
 
 @app.route('/Retailer_page')
 def retialer_page():
@@ -46,6 +47,7 @@ def signup():
     form=SignUpForm()
     if form.validate_on_submit():
         # pass # insert db operations here
+        # if accepted redirect to the root fmainpage.htmml
         return redirect('/')
     return render_template('signup.html',title='SIGN UP',form=form)
 
