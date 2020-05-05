@@ -8,7 +8,7 @@ class Form(FlaskForm):
     username=StringField('Username',validators=[DataRequired()])
     password=PasswordField('Password',validators=[DataRequired()])
     remember=BooleanField("Know me??")
-    # acc_type=RadioField('Account type',validators=[DataRequired()],choices=['Farmer','Retailer'])
+    acc_type=RadioField('Account type',validators=[DataRequired()],choices=['Farmer','Retailer'])
     # we dont need this field as we can fetch the data from the
     submit=SubmitField('Sign in')
 

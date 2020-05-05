@@ -19,10 +19,6 @@ def auction_page():
     # as the input list here
     return render_template('auction_page.html',auction_list=lis)
 
-@app.route('/signup')
-def index():
-    return render_template('signup.html')
-
 @app.route('/home')
 def remain():
     return render_template('main_page.html')
@@ -44,15 +40,14 @@ def mainpage():
 #         flash(f'Login requested for user {form.username.data} and {form.remember.data}')
 #         return redirect('/')
 #     return render_template('login_template.html',title='SIGN IN',form=form)
-# hh sada
-#this change is new
-@app.route('/signup',methods=['GET','POST'])
+
+@app.route('/signup')
 def signup():
     form=SignUpForm()
-    if form.username!=None or form.username!='':
-        pass # insert db operations here
+    if form.validate_on_submit():
+        # pass # insert db operations here
         return redirect('/')
-    return render_template('signup.html',title='SIGN IN',form=form)
+    return render_template('signup.html',title='SIGN UP',form=form)
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1')
