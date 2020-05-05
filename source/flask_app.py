@@ -44,7 +44,7 @@ def mainpage():
 #         flash(f'Login requested for user {form.username.data} and {form.remember.data}')
 #         return redirect('/')
 #     return render_template('login_template.html',title='SIGN IN',form=form)
-
+# hh
 @app.route('/signup',methods=['GET','POST'])
 def signup():
     form=SignUpForm()
