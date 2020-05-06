@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, redirect, url_for, request,g
 # from source import login_from
 from login_from import Form, SignUpForm, PostHarvestForm,User,Auction
 from databasefunctions import *
+import sqlite3 as sq
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'raj'
