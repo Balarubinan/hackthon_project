@@ -1,6 +1,8 @@
 # Hackathon_project
 # Farmer and Retailer Web Application
 ------This project is under development----
+Due to Configuration changes in running locally and on server a new flask_app.py file was created to support the server activites
+which is named as flask_app(Deployed version).py inside source directory just to give a clarity 
 # Project problem statement:
  nowadays agricultural activity's success is mainly based on the farmer's contact with the retailers/traders.
  but as we know it fresh farmers find it hard to earn trust of retailers and to find more contacts.
