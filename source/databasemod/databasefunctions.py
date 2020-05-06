@@ -15,20 +15,18 @@ def EncryptString(password):
 #
 # # connecting to database with relative path
 # def get_db():
-#     try:
-#         con = sq.connect("\source\databasemod\database.db")  # the database is in the ssame path as this module
-#         cur = con.cursor()
-#         return cur
-#     except Exception:
-#         print("Database error occurred ")
-#         # print(traceback.)
-#         traceback.print_exc()  # printing stack trace for the error occurred
+try:
+    con = sq.connect("D:\html projects\Hackathon project\source\database.db")  # the database is in the ssame path as this module
+    cur = con.cursor()
+except Exception:
+    print("Database error occurred ")
+    traceback.print_exc()  # printing stack trace for the error occurred
 
 # declaring required functions
 
 # function to fetch user credentials form the database
-def fetch_cred(cur,user):
-    # global con, cur
+def fetch_cred(user):
+    global con, cur
     try:
         cur.execute(f"select * from user where name='{user}'")
         print(cur.fetchall())
@@ -51,8 +49,9 @@ def fetch_posts(cur,user, type):
         return None
 
 #fetches a particular auction with title given
-def fetch_auction(cur,title):
-    # global con, cur
+
+def fetch_auction(title):
+    global con, cur
     try:
         cur.execute(f"select * from auction where title='{title}'")
         return cur.fetchall()
@@ -62,8 +61,8 @@ def fetch_auction(cur,title):
         return None
 
 # function to obtain the list of auctions
-def fetch_auctions(cur):
-    # global con, cur
+def fetch_auctions():
+    global con, cur
     try:
         cur.execute("select * from auction")
         return cur.fetchall()
@@ -74,19 +73,19 @@ def fetch_auctions(cur):
 
 
 # function to fetch historical posts
-def fetch_his_posts(cur,user,type):
-    # global con, cur
+def fetch_his_posts(user,type):
+    global con, cur
     try:
-        cur.execute(f"select * from posts where post_by='{user}' and post_type='{type}' ")
+        cur.execute(f"select * from posts where post_by='{user}' and post_type='{type}'")
         return cur.fetchall()
     except Exception:
-        print("Eror while trying to fetch posts")
+        print("Error while trying to fetch posts")
         traceback.print_exc()
         return None
 
 # function to add a new user
-def add_user(cur,user):
-    # global con,cur
+def add_user(user):
+    global con,cur
     try:
         cur.execute(f"insert into user values(?,?,?,?,?,?)",[user.name,user.email,user.phone,user.address,EncryptString(user.password),user.type])
         return True
@@ -96,8 +95,8 @@ def add_user(cur,user):
         return None
 
 # fucntion to add posts
-def add_post(cur,post_title,post_descrpt,post_by,post_type):
-    # global cur,con
+def add_post(post_title,post_descrpt,post_by,post_type):
+    global cur,con
     try:
         datenow=datetime.now() # to get current date and time
         cur.execute("insert into posts values(?,?,?,?,?)",[post_title,post_descrpt,post_by,post_type,datenow])
@@ -107,3 +106,4 @@ def add_post(cur,post_title,post_descrpt,post_by,post_type):
 
 # print(get_db().execute("select * from user"))
 # print(EncryptString("Bala"))
+# print(fetch_cred("bala"))

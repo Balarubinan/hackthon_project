@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,BooleanField,PasswordField,SubmitField,RadioField
+from wtforms import StringField,BooleanField,PasswordField,SubmitField,RadioField,IntegerField
 from wtforms.validators import DataRequired
 from wtforms.fields.html5 import EmailField
 from source.databasemod.databasefunctions import fetch_cred,fetch_auctions,fetch_auction
@@ -30,6 +30,17 @@ class PostHarvestForm(FlaskForm):
     postdescript=StringField('Post Description',validators=[DataRequired()])
     submit = SubmitField('Post harvest details', render_kw={'type': "submit", 'class': 'signupbtn'})
 
+class AuctionForm(FlaskForm):
+    title=StringField('Title of the Auction',validators=[DataRequired()])
+    content=StringField('Description of auction',validators=[DataRequired()])
+    submit=SubmitField('Create Auction')
+    date=None # stores the ddate oon which the auction was made
+    st_by=None # store who started thee auction
+    cur_bid=IntegerField('Enter Starting Bid Amount ',validators=[DataRequired()]) # cur_bid amount aat first it is set to the min value speficied
+    # by the poster
+    last_bidder=None # who made the last bid
+    bids=None # number of bids made on this auction
+
 # user defined class to
 class User:
     def __init__(self):
@@ -59,6 +70,8 @@ class Auction:
         self.cur_bid=None
         self.last_bidder=None
         self.bids=None
+        self.content=None
+        self.date=None
     def initialize_values(self,title):
         try:
             auct=fetch_auction(title)[0]

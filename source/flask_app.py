@@ -1,7 +1,8 @@
 from flask import Flask, render_template, flash, redirect, url_for, request,g
 # from source import login_from
-from source.login_from import Form, SignUpForm, PostHarvestForm,User,Auction
+from source.login_from import Form, SignUpForm, PostHarvestForm,User,Auction,AuctionForm
 from source.databasemod.databasefunctions import *
+import random
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'raj'
@@ -10,19 +11,35 @@ cur_user=User()
 
 DATABASE = 'source/database.db'
 
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sq.connect(DATABASE)
-    return db
+# def get_db():
+#     db = getattr(g, '_database', None)
+#     if db is None:
+#         db = g._database = sq.connect(DATABASE)
+#     return db
+#
+# @app.teardown_appcontext
+# def close_connection(exception):
+#     db = getattr(g, '_database', None)
+#     if db is not None:
+#         db.close()
 
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
 
-
+# fuction to create an auction
+@app.route('/create_auction',methods=['GET','POST'])
+def create_auction():
+    auct=AuctionForm() # Creating form to hold the auction details
+    if auct.title.data!=None:
+        auct_obj=Auction()
+        auct_obj.st_by=auct.st_by.data
+        auct_obj.title=auct.title.data
+        auct_obj.content=auct.content.data
+        auct_obj.date=datetime.now()
+        auct_obj.id=random.randint(1,1000)
+        auct_obj.cur_bid=auct.cur_bid.data
+        auct_obj.bids=0
+        auct_obj.last_bidder=cur_user.name
+        return redirect('/home')
+    return render_template('create_auction.html')
 
 
 
@@ -94,11 +111,10 @@ def remain():
 def mainpage():
     form = Form()
     # access the database and get the needed authencation
-    cur=get_db().cursor()
-    val=fetch_cred(cur,form.username.data)
-    print(val,form.username.data)
-    if form.username.data!=None:
-        if EncryptString(form.password.data)==fetch_cred(cur,form.username.data):
+    # cur=fetch_cred(form.username.data)
+    val=fetch_cred(form.username.data)
+    if val!=None and form.username.data!=None:
+        if EncryptString(form.password.data)==val:
             print('In here')
             return redirect(url_for(f'{form.acc_type.data.lower()}_page'))
     return render_template('main_page.html', form=form)
@@ -125,10 +141,14 @@ def signup():
         cur_user.password=form.password1.data
         cur_user.type=form.acc_type.data
         cursor=get_db().cursor()
-        add_user(cursor,cur_user)
+        add_user(cur_user)
         return redirect('/home')
     return render_template('signup.html', title='SIGN UP', form=form)
 
+@app.route('/DEBUG')
+def debug():
+    lis=fetch_cred("bala")
+    return render_template('debug.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1')
