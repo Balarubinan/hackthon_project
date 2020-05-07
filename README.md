@@ -1,6 +1,5 @@
 # Hackathon_project
 # Farmer and Retailer Web Application
-------This project is under development----
 Due to Configuration changes in running locally and on server a new flask_app.py file was created to support the server activites
 which is named as flask_app(Deployed version).py inside source directory just to give a clarity
 # Project problem statement:
@@ -18,4 +17,4 @@ which is named as flask_app(Deployed version).py inside source directory just to
 (visit http://balarubinan.pythonanywhere.com/home)
 5)Testing phase is over Testing Done :-(Integration testing and Stub testing)
 6)Rendering UI changes and Bug fixes
-
+7) The website is now fully functional and ready to use
