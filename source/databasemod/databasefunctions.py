@@ -104,6 +104,16 @@ def add_post(post_title,post_descrpt,post_by,post_type):
     except Exception:
         return False
 
+def fetch_auction_by_id(id):
+    global con, cur
+    try:
+        cur.execute(f"select * from auction where id='{id}'")
+        return cur.fetchall()
+    except Exception:
+        print("Error while trying to fetch auctions")
+        traceback.print_exc()
+        return None
+
 # print(get_db().execute("select * from user"))
 # print(EncryptString("Bala"))
 # print(fetch_cred("bala"))

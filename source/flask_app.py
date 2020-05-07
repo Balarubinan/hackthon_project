@@ -41,6 +41,12 @@ def create_auction():
         return redirect('/home')
     return render_template('create_auction.html')
 
+# @app.route('/bid/<auct_id>')
+# def bid(auct_id):
+#     # val=fetch_auction_by_id(auct_id)
+#     auction=Auction()
+#     auction.initialize_values(auct_id)
+#
 
 
 @app.route('/About')

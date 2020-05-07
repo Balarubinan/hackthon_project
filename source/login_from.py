@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,BooleanField,PasswordField,SubmitField,RadioField,IntegerField
 from wtforms.validators import DataRequired
 from wtforms.fields.html5 import EmailField
-from source.databasemod.databasefunctions import fetch_cred,fetch_auctions,fetch_auction
+from source.databasemod.databasefunctions import fetch_cred,fetch_auctions,fetch_auction,fetch_auction_by_id
 
 # this class obejct is used to hold the sigin form for aldready exsting users
 class Form(FlaskForm):
@@ -72,11 +72,11 @@ class Auction:
         self.bids=None
         self.content=None
         self.date=None
-    def initialize_values(self,title):
+    def initialize_values(self,id1):
         try:
-            auct=fetch_auction(title)[0]
-            self.id=auct[0]
-            self.title=title
+            auct=fetch_auction_by_id(id1)[0]
+            self.id=id1
+            self.title=auct[1]
             self.st_by=auct[2]
             self.cur_bid=auct[3]
             self.last_bidder=auct[4]
