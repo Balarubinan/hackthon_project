@@ -14,7 +14,8 @@ which is named as flask_app(Deployed version).py inside source directory just to
 1)All UI for the website has been completed
 2)database schemas have been decide
 3)database created and database functions have been finished
-4)Web app has been deployed Basic Skeleton of web app working ,Facing problems with DB hosting python environment
+4)Web app has been deployed and it's fully functional with all database and Backend Operations
 (visit http://balarubinan.pythonanywhere.com/home)
-5)configuring database hosting
+5)Testing phase is over Testing Done :-(Integration testing and Stub testing)
+6)Rendering UI changes and Bug fixes
 
